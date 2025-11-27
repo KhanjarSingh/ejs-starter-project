@@ -31,6 +31,10 @@ let movies = [{
 
 app.set('view engine', 'ejs');
 
+app.get('/', (req, res) => {
+    res.render('home')
+})
+
 app.get('/movie', (req, res) => {
     res.render('movie', {
         title: "Inception",
