@@ -3,17 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies</title>
+    <title><%=title%> - Movie Details</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f4f4f4; min-height: 100vh; padding: 2rem; }
+        .movie-card { background: white; border-radius: 10px; padding: 2rem; max-width: 800px; margin: 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: flex; gap: 2rem; }
+        .movie-info { flex: 1; }
+        .movie-title { color: #333; font-size: 2rem; margin-bottom: 0.5rem; }
+        .movie-year { color: #666; font-size: 1.1rem; margin-bottom: 1rem; }
+        .rating { background: #28a745; color: white; padding: 0.5rem 1rem; border-radius: 5px; display: inline-block; margin-bottom: 1.5rem; }
+        .actors-title { color: #333; font-size: 1.2rem; margin-bottom: 1rem; }
+        .actors-list { list-style: none; }
+        .actor { background: #e9ecef; padding: 0.5rem 1rem; margin: 0.5rem 0; border-radius: 5px; color: #333; }
+        .movie-poster { border-radius: 10px; width: 250px; height: 375px; object-fit: cover; }
+        .back-btn { display: inline-block; margin-bottom: 2rem; background: #007bff; color: white; padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; }
+        .back-btn:hover { background: #0056b3; }
+    </style>
 </head>
 <body>
-    <h3>Movie: <%=title%></h3>
-    <h3>Release Year: <%=releaseYear%></h3>
-    <h3>Rating: <%=rating%></h3>
-    <ul>
-        <% actors.forEach((actor)=>{ %>
-            <li><%= actor %></li>
-        <% }); %>
-    </ul>
-    <img src=<%=image%> style='width: 200px;height: 300px;'/>
+    <a href="/" class="back-btn">← Home</a>
+    <div class="movie-card">
+        <div class="movie-info">
+            <h1 class="movie-title"><%=title%></h1>
+            <p class="movie-year"><%=releaseYear%></p>
+            <div class="rating">⭐ <%=rating%>/10</div>
+            <h3 class="actors-title">Starring:</h3>
+            <ul class="actors-list">
+                <% actors.forEach((actor)=>{ %>
+                    <li class="actor"><%=actor%></li>
+                <% }); %>
+            </ul>
+        </div>
+        <img src="<%=image%>" alt="<%=title%> Poster" class="movie-poster"/>
+    </div>
 </body>
 </html>

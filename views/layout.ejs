@@ -3,12 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movie Collection</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f4f4f4; min-height: 100vh; padding: 2rem; }
+        .header { text-align: center; margin-bottom: 2rem; }
+        .header h1 { color: #333; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .movies-container { max-width: 1200px; margin: 0 auto; }
+        .movie-item { background: white; margin-bottom: 2rem; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: flex; gap: 2rem; align-items: flex-start; }
+        .movie-poster { width: 200px; height: 300px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+        .movie-details { flex: 1; }
+        .movie-title { color: #333; font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .movie-year { color: #666; font-size: 1.1rem; margin-bottom: 1rem; }
+        .rating { background: #28a745; color: white; padding: 0.5rem 1rem; border-radius: 5px; display: inline-block; margin-bottom: 1rem; }
+        .actors-title { color: #333; font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .actors-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .actor { background: #e9ecef; padding: 0.3rem 0.8rem; border-radius: 5px; color: #333; font-size: 0.9rem; }
+        .back-btn { display: inline-block; margin-bottom: 2rem; background: #007bff; color: white; padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; }
+        .back-btn:hover { background: #0056b3; }
+    </style>
 </head>
 <body>
-    <%movies.forEach(movie=>{%>
-        <%- include('movie',movie) %>
-    <%})%>
-    
+    <a href="/" class="back-btn">← Home</a>
+    <div class="header">
+        <h1>🎬 Movie Collection</h1>
+    </div>
+    <div class="movies-container">
+        <%movies.forEach(movie=>{%>
+            <div class="movie-item">
+                <img src="<%=movie.image%>" alt="<%=movie.title%> Poster" class="movie-poster"/>
+                <div class="movie-details">
+                    <h2 class="movie-title"><%=movie.title%></h2>
+                    <p class="movie-year"><%=movie.releaseYear%></p>
+                    <div class="rating">⭐ <%=movie.rating%>/10</div>
+                    <h3 class="actors-title">Cast:</h3>
+                    <ul class="actors-list">
+                        <% movie.actors.forEach((actor)=>{ %>
+                            <li class="actor"><%=actor%></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            </div>
+        <%})%>
+    </div>
 </body>
 </html>
