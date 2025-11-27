@@ -18,6 +18,12 @@
         .movie-poster { border-radius: 10px; width: 250px; height: 375px; object-fit: cover; }
         .back-btn { display: inline-block; margin-bottom: 2rem; background: #007bff; color: white; padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; }
         .back-btn:hover { background: #0056b3; }
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            .movie-card { flex-direction: column; text-align: center; }
+            .movie-poster { width: 200px; height: 300px; margin: 0 auto; }
+            .movie-title { font-size: 1.5rem; }
+        }
     </style>
 </head>
 <body>
